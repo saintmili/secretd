@@ -1,0 +1,26 @@
+# ~/.secretd/config.toml
+
+version = 1
+
+[clipboard]
+clear_after_seconds = 15
+wayland_backend = "wl-copy"
+x11_backend = "xclip"
+
+[vault]
+path = "$HOME/.local/share/secretd/vault.json"
+auto_backup = true
+
+[security]
+wipe_memory = true
+argon2_time = 3
+argon2_memory = 65536
+argon2_threads = 4
+salt_length = 16
+key_length = 32
+max_failed_unlocks = 5
+lockout_seconds = 300
+
+[logging]
+enabled = true
+file = "$HOME/.local/share/secretd/secretd.log"

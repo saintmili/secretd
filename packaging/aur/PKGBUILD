@@ -1,0 +1,32 @@
+# Maintainer: Milad Ahrari <m.ahrari77@gmail.com>
+pkgname=secretd-git
+pkgver=v1.0.0-dirty
+pkgrel=1
+pkgdesc="Minimal, security-focused local password manager (git version)"
+arch=('x86_64')
+url="https://github.com/saintmili/secretd"
+license=('MIT')
+depends=('glibc')
+makedepends=('go' 'git')
+provides=('secretd')
+conflicts=('secretd')
+source=("$pkgname::git+https://github.com/saintmili/secretd.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags --dirty --always \
+    | sed 's/^v//' \
+    | sed 's/-/.r/' \
+    | sed 's/-/./'
+}
+
+build() {
+  cd "$srcdir/$pkgname"
+  make build
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+}

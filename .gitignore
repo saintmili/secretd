@@ -1,0 +1,20 @@
+# Go build
+/bin/
+/build/
+/pkg/
+/*.exe
+*.test
+*.out
+/dist/
+
+# Editor / OS
+*.swp
+*.DS_Store
+.idea/
+.vscode/
+*.log
+
+# AUR build dirs
+packaging/aur/pkg/
+packaging/aur/src/
+
